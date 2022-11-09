@@ -13,4 +13,21 @@ class PlantsController < ApplicationController
         end
     end
 
+    def create
+        # plant = Plant.create(plant_params)
+        # if plant.valid?
+        #     render json: plant, status: :created
+        # else
+        #     render json: {errors: plant.errors.full_messages}, status: :unprocessable_entity
+        # end
+        plant = Plant.create(plant_params)
+        render json: plant, status: :created
+    end
+
+    private
+
+    def plant_params
+        params.permit(:name, :image, :price)
+    end
+
 end
